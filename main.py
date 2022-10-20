@@ -1,40 +1,46 @@
-/*OPERAZIONI ARITMETICHE*/
-def addizione(*numbers):
+import math
+
+/*Global ans*/
+ans = None
+
+def addizione(numbers):
     somma = 0
     for num in numbers:
-        somma += num
+        somma += float(num)
     return somma
 
-def sottrazione(*numbers):
-    differenza = numbers[0]
+def sottrazione(numbers):
+    differenza = float(numbers[0])
     for num in numbers[1:]:
-        differenza -= num
+        differenza -= float(num)
     return differenza
 
-def moltiplicazione(*numbers):
+def moltiplicazione(numbers):
     prodotto = 1
     for num in numbers:
-        prodotto *= num
+        prodotto *= float(num)
     return prodotto
 
-def divisione(*numbers):
-    divisione = numbers[0]
+def divisione(numbers):
+    divisione = float(numbers[0])
     for num in numbers[1:]:
-        if(num == 0):
-            raise ZeroDivisionError('Errrore: Il dividendo è uguale a 0!')
-        divisione *= pow(num, -1)
+        if(num.__contains__('0')):
+            raise ZeroDivisionError('Errore: Il dividendo è uguale a 0!')
+        divisione *= pow(float(num), -1)
     return divisione
 
+def potenza(a, b):
+    if(a.__contains__('0')):
+        print('Warning: Il primo numero inserito è uguale a 0')
+        return 0
+    return pow(float(a), float(b))
+
 def logaritmo(base, number):
-    if(number == 0):
+    if(number.__contains__('0')):
         raise ArithmeticError('Errore: Il numero inserito è uguale a 0!')
-    return math.log(number, base)
+    return math.log(float(number), int(base))
 
-def potenza(a,b):
-    if(a == 0):
-        raise ArithmeticError('Errore: Il numero inserito è uguale a 0!')
-    return pow(a,b)
-
+# Press the green button in the gutter to run the script.
 def menu():
 
     print("CALCOLATRICE: OPERAZIONI DISPONIBILI")
@@ -54,41 +60,43 @@ def menu():
     scelta  = input("Scegli una operazione: ")
     return scelta
 
-def main():
+if __name__ == '__main__':
 
     scelta=menu()
     while(scelta!=0):
         match scelta:
             case "1":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", addizione(a,b))
+                list = tuple(input('Inserire gli operandi: ').split())
+                ans = addizione(list)
+                print("Risultato: ", ans)
             case "2":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", sottrazione(a,b))
+                list = tuple(input('Inserire gli operandi: ').split())
+                ans = sottrazione(list)
+                print("Risultato: ", ans)
             case "3":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", moltiplicazione(a,b))
+                list = tuple(input('Inserire gli operandi: ').split())
+                ans = moltiplicazione(list)
+                print("Risultato: ", ans)
             case "4":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", divisione(a,b))
+                list = tuple(input('Inserire gli operandi: ').split())
+                ans = divisione(list)
+                print("Risultato: ", ans)
             case "5":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", potenza(a,b))
+                a = input("Inserire il primo operando: ")
+                b = input("Inserire il secondo operando: ")
+                ans = potenza(a, b)
+                print("Risultato: ", ans)
             case "6":
-                a=input("Inserire il primo operando: ")
-                b=input("Inserire il secondo operando: ")
-                print("Risultato: ", logaritmo(a,b))   
+                a = input("Inserire la base del logaritmo: ")
+                b = input("Inserire un numero: ")
+                ans = logaritmo(a, b)
+                print("Risultato: ", ans)
             case "a":
                 print("Cronologia Operazioni")
             case "b":
-                print("Ans")
+                print('Ultimo risultato: ', ans)
             case "0":
                 print("Spegnimento Calcolatrice")
+                break
 
         scelta = menu()
-main()
