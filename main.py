@@ -30,6 +30,11 @@ def logaritmo(base, number):
         raise ArithmeticError('Errore: Il numero inserito è uguale a 0!')
     return math.log(number, base)
 
+def potenza(a,b):
+    if(a == 0):
+        raise ArithmeticError('Errore: Il numero inserito è uguale a 0!')
+    return pow(a,b)
+
 def menu():
 
     print("CALCOLATRICE: OPERAZIONI DISPONIBILI")
