@@ -1,6 +1,5 @@
 import math
 
-/*Global ans*/
 ans = None
 
 def addizione(numbers):
@@ -71,33 +70,61 @@ if __name__ == '__main__':
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = addizione(list)
                 print("Risultato: ", ans)
-                if(memoria.__sizeof__ < 10): 
-                    memoria.add(ans: "Addizione")
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Addizione'
                 else:
-                    memoria.delete(memoria.pop)
-                    memoria.add(ans: "Addizione")
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Addizione'
             case "2":
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = sottrazione(list)
                 print("Risultato: ", ans)
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Sottrazione'
+                else:
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Sottrazione'
             case "3":
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = moltiplicazione(list)
                 print("Risultato: ", ans)
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Moltiplicazione'
+                else:
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Moltiplicazione'
             case "4":
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = divisione(list)
                 print("Risultato: ", ans)
+                print(len(memoria))
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Divisione'
+                else:
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Divisione'
             case "5":
                 a = input("Inserire il primo operando: ")
                 b = input("Inserire il secondo operando: ")
                 ans = potenza(a, b)
                 print("Risultato: ", ans)
+                print(len(memoria))
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Potenza'
+                else:
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Potenza'
             case "6":
                 a = input("Inserire la base del logaritmo: ")
                 b = input("Inserire un numero: ")
                 ans = logaritmo(a, b)
                 print("Risultato: ", ans)
+                print(len(memoria))
+                if(len(memoria) < 10):
+                    memoria[ans] = 'Logaritmo'
+                else:
+                    memoria.pop(next(iter(memoria)))
+                    memoria[ans] = 'Logaritmo'
             case "a":
                 print("Cronologia Operazioni")
                 print(memoria)
