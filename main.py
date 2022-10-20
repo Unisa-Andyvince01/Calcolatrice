@@ -25,6 +25,11 @@ def divisione(*numbers):
         divisione *= pow(num, -1)
     return divisione
 
+def logaritmo(base, number):
+    if(number == 0):
+        raise ArithmeticError('Errore: Il numero inserito è uguale a 0!')
+    return math.log(number, base)
+
 def main():
 
     scelta=menu()
