@@ -62,6 +62,8 @@ def menu():
 
 if __name__ == '__main__':
 
+    memoria = dict()
+
     scelta=menu()
     while(scelta!=0):
         match scelta:
@@ -69,6 +71,11 @@ if __name__ == '__main__':
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = addizione(list)
                 print("Risultato: ", ans)
+                if(memoria.__sizeof__ < 10): 
+                    memoria.add(ans: "Addizione")
+                else:
+                    memoria.delete(memoria.pop)
+                    memoria.add(ans: "Addizione")
             case "2":
                 list = tuple(input('Inserire gli operandi: ').split())
                 ans = sottrazione(list)
@@ -93,6 +100,7 @@ if __name__ == '__main__':
                 print("Risultato: ", ans)
             case "a":
                 print("Cronologia Operazioni")
+                print(memoria)
             case "b":
                 print('Ultimo risultato: ', ans)
             case "0":
