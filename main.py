@@ -91,3 +91,4 @@ def main():
                 print("Spegnimento Calcolatrice")
 
         scelta = menu()
+main()
