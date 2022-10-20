@@ -1,22 +1,26 @@
 /*OPERAZIONI ARITMETICHE*/
-def addizione(a, b):
-    if(not isinstance(a, (int, float)) or not isinstance(b, (int, float))):
-        raise TypeError('Non sono stati inseriti numeri reali!')
-    return a + b
+def addizione(*numbers):
+    somma = 0
+    for num in numbers:
+        somma += num
+    return somma
 
-def sottrazione(a, b):
-    if(not isinstance(a, (int, float)) or not isinstance(b, (int, float))):
-        raise TypeError('Non sono stati inseriti numeri reali!')
-    return a - b
+def sottrazione(*numbers):
+    differenza = numbers[0]
+    for num in numbers[1:]:
+        differenza -= num
+    return differenza
 
-def moltiplicazione(a, b):
-    if(not isinstance(a, (int, float)) or not isinstance(b, (int, float))):
-        raise TypeError('Non sono stati inseriti numeri reali!')
-    return a * b
+def moltiplicazione(*numbers):
+    prodotto = 1
+    for num in numbers:
+        prodotto *= num
+    return prodotto
 
-def divisione(a, b):
-    if(not isinstance(a, (int, float)) or not isinstance(b, (int, float))):
-        raise TypeError('Non sono stati inseriti numeri reali!')
-    if(b == 0):
-        raise ZeroDivisionError('Error: Il secondo termine inserito è uguale a 0')
-    return a / b
+def divisione(*numbers):
+    divisione = numbers[0]
+    for num in numbers[1:]:
+        if(num == 0):
+            raise ZeroDivisionError('Errrore: Il dividendo è uguale a 0!')
+        divisione *= pow(num, -1)
+    return divisione
